@@ -9,7 +9,7 @@ module.exports = {
     },
     
     async create(request, response){
-        const {nome_raca, deslocamento} = request.body;
+        const {id_raca, nome_raca, deslocamento} = request.body;
 
     await connection('raca').insert({
         id_raca,
