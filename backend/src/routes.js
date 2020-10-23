@@ -9,6 +9,8 @@ const routes = express.Router();
 
 routes.get('/racas', racasController.list);
 routes.post('/racas', racasController.create);
+routes.delete('/racas/:id_raca', racasController.delete);
+routes.put('/racas/:id_raca', racasController.update);
 
 
 module.exports = routes;
