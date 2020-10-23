@@ -1,5 +1,3 @@
-const { response } = require('express');
-const { update } = require('../database/connection');
 const connection = require('../database/connection');
 
 module.exports = {
@@ -22,15 +20,7 @@ module.exports = {
     return response.json({ id_raca });
     },
 
-    async delete(request, responde) {
-        const { id_raca } = request.params;
-
-    await connection('raca').where('id_raca', id_raca).delete();
-    
-    return response.status(204).send();
-    },
-
-    async update(request, response){
+     async update(request, response){
         const { id_raca } = request.params;
         const { nome_raca } = request.body;
         const { deslocamento } = request.body;
@@ -41,5 +31,13 @@ module.exports = {
     });
     
     return response.json({ nome_raca, deslocamento });
+    },
+
+    async delete(request, responde) {
+        const { id_raca } = request.params;
+
+    await connection('raca').where('id_raca', id_raca).delete();
+    
+    return response.status(204).send();
     }
 }
