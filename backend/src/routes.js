@@ -1,6 +1,7 @@
 const express = require('express');
 
 const racasController = require('./controllers/racasController');
+const classesController = require('./controllers/classesController');
 
 const connection = require('./database/connection');
 
