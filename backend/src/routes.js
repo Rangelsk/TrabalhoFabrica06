@@ -2,6 +2,7 @@ const express = require('express');
 
 const racasController = require('./controllers/racasController');
 const classesController = require('./controllers/classesController');
+const proeficienciasController = require('./controllers/proeficienciasController');
 
 const connection = require('./database/connection');
 
@@ -18,5 +19,11 @@ routes.get('/classes', classesController.list);
 routes.post('/classes', classesController.create);
 routes.put('/classes/:id_classe', classesController.update);
 routes.delete('/classes/:id_classe', classesController.delete);
+
+//Rotas para Proeficiencias
+routes.get('/proeficiencias', proeficienciasController.list);
+routes.post('/proeficiencias', proeficienciasController.create);
+routes.put('/proeficiencias/:id_proeficiencias', proeficienciasController.update);
+routes.delete('/proeficiencias/:id_proeficiencias', proeficienciasController.delete);
 
 module.exports = routes;

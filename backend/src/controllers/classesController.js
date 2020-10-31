@@ -23,7 +23,7 @@ module.exports = {
     async update (request, response){
         const { id_classe } = request.params;
         const { nome_classe } = request.body;
-        const { vida_classe } = request.body
+        const { vida_classe } = request.body;
 
     await connection('classe').where('id_classe', id_classe).update({
         nome_classe,
