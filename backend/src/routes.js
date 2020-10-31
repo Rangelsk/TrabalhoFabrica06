@@ -17,6 +17,6 @@ routes.delete('/racas/:id_raca', racasController.delete);
 routes.get('/classes', classesController.list);
 routes.post('/classes', classesController.create);
 routes.put('/classes/:id_classe', classesController.update);
-routes.delete('/classes:id_classe', classesController.delete);
+routes.delete('/classes/:id_classe', classesController.delete);
 
 module.exports = routes;
