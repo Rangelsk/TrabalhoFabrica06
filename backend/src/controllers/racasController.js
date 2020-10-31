@@ -17,7 +17,7 @@ module.exports = {
         deslocamento,
     });
 
-    return response.json({ id_raca });
+    return response.json({ nome_raca, deslocamento });
     },
 
      async update(request, response){
@@ -33,7 +33,7 @@ module.exports = {
     return response.json({ nome_raca, deslocamento });
     },
 
-    async delete(request, responde) {
+    async delete(request, response) {
         const { id_raca } = request.params;
 
     await connection('raca').where('id_raca', id_raca).delete();
