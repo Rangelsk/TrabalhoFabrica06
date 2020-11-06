@@ -2,13 +2,13 @@ const connection = require('../database/connection');
 
 module.exports = {
 
-    async list (request, response) {
+    async listar (request, response) {
         const racas = await connection('raca').select('*');
     
         return response.json(racas);
     },
     
-    async create(request, response){
+    async cadastrar(request, response){
         const {id_raca, nome_raca, deslocamento} = request.body;
 
     await connection('raca').insert({
@@ -20,7 +20,7 @@ module.exports = {
     return response.json({ nome_raca, deslocamento });
     },
 
-     async update(request, response){
+     async atualizar (request, response){
         const { id_raca } = request.params;
         const { nome_raca } = request.body;
         const { deslocamento } = request.body;
@@ -33,7 +33,7 @@ module.exports = {
     return response.json({ nome_raca, deslocamento });
     },
 
-    async delete(request, response) {
+    async deletar (request, response) {
         const { id_raca } = request.params;
 
     await connection('raca').where('id_raca', id_raca).delete();

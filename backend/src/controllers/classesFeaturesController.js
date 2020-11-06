@@ -1,14 +1,15 @@
 const connection = require('../database/connection');
+const { cadastrar, atualizar } = require('./fichasController');
 
 module.exports = {
 
-    async list (request, response) {
+    async listar (request, response) {
         const classesFeatures = await connection('classe_feature').select('*');
 
         return response.json(classesFeatures);
     },
 
-    async create (request, response) {
+    async cadastrar (request, response) {
         const { id_classe_feature, nome_classe_feature, descricao_classe_feature, classe_id} = request.body;
 
     await connection('classe_feature').insert({
@@ -21,7 +22,7 @@ module.exports = {
     return response.json({ nome_classe_feature, descricao_classe_feature, classe_id });
     },
 
-    async update (request, response) {
+    async atualizar (request, response) {
         const { id_classe_feature } = request.params;
         const { nome_classe_feature } = request.body;
         const { descricao_classe_feature } = request.body;
@@ -35,7 +36,7 @@ module.exports = {
     return response.json({ nome_classe_feature, descricao_classe_feature });
     },
 
-    async delete (request, response) {
+    async deletar (request, response) {
         const { id_classe_feature } = request.params;
 
     await connection('classe_Feature').where('id_classe_feature', id_classe_feature).delete();

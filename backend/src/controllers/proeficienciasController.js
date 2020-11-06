@@ -1,16 +1,14 @@
-const { update } = require('../database/connection');
 const connection = require('../database/connection');
-const { create } = require('./classesController');
 
 module.exports = {
 
-    async list (request, response) {
+    async listar (request, response) {
         const proeficiencias = await connection('proeficiencias').select('*');
 
         return response.json(proeficiencias);
     },
 
-    async create (request, response) {
+    async cadastrar (request, response) {
         const {id_proeficiencias, nome_proeficiencia, aptidao} = request.body;
 
     await connection('proeficiencias').insert({
@@ -22,7 +20,7 @@ module.exports = {
     return response.json({id_proeficiencias});
     },
 
-    async update (request, response){
+    async atualizar (request, response){
         const { id_proeficiencias } = request.params;
         const { nome_proeficiencia } = request.body;
         const { aptidao } = request.body;
@@ -35,7 +33,7 @@ module.exports = {
     return response.json({ nome_proeficiencia, aptidao });
     },
 
-    async delete (request, response) {
+    async deletar (request, response) {
         const { id_proeficiencias } = request.params;
 
     await connection('proeficiencias').where('id_proeficiencias', id_proeficiencias).delete();

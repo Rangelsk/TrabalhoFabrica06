@@ -2,13 +2,13 @@ const connection = require('../database/connection');
 
 module.exports = {
 
-    async list (request, response) {
+    async listar (request, response) {
         const racasFeatures = await connection('raca_feature').select('*');
 
         return response.json(racasFeatures);
     },
 
-    async create (request, response) {
+    async cadastrar (request, response) {
         const { id_raca_feature, nome_raca_feature, descricao, raca_id } = request.body;
 
     await connection('raca_feature').insert({
@@ -21,7 +21,7 @@ module.exports = {
     return response.json({ nome_raca_feature, descricao, raca_id });
     },
 
-    async update (request, response) {
+    async atualizar (request, response) {
         const { id_raca_feature } = request.params;
         const { nome_raca_feature } = request.body;
         const { descricao } = request.body;
@@ -35,7 +35,7 @@ module.exports = {
     return response.json({ nome_raca_feature, descricao });
     },
 
-    async delete (request, response) {
+    async deletar (request, response) {
         const { id_raca_feature } = request.params;
 
     await connection('raca_feature').where('id_raca_feature', id_raca_feature).delete();
